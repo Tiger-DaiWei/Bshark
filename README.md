@@ -38,7 +38,7 @@ vue.js 框架, vue-router SPA 路由, vuex 全局状态管理器
 - axios
 基于 promise 的HTTP 库
 - element-ui
-饿了么 t团队的ui组件库
+饿了么 团队的ui组件库
 - echarts
 百度团队的可视化图表库
 - lodash
