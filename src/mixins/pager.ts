@@ -1,10 +1,10 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 interface Pager {
-  currentPage: number,
-  pageSize: number,
-  pageTotal: number,
-  total: number,
+  currentPage: number;
+  pageSize: number;
+  pageTotal: number;
+  total: number;
 }
 
 @Component
