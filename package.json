@@ -10,6 +10,7 @@
   "dependencies": {
     "@types/lodash": "^4.14.149",
     "core-js": "^3.4.3",
+    "element-ui": "^2.13.0",
     "moment": "^2.24.0",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
