@@ -1,12 +1,12 @@
 import { RouteConfig } from 'vue-router';
-import Home from '../views/Home.vue';
+import Index from '../views/index.vue';
 import About from '../views/About.vue';
 // 无需权限路由
 export const commonRoutes: RouteConfig[] = [
   {
     path: '/',
-    name: 'home',
-    component: Home,
+    name: 'index',
+    component: Index,
   },
   {
     path: '/about',
