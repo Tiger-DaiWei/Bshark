@@ -1,6 +1,5 @@
 <template>
-  <div class="home">
-    <h1>This is an home page</h1>
+  <div class="project-index">
   </div>
 </template>
 
@@ -13,5 +12,13 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
   },
 })
 export default class Home extends Vue {
+
 }
 </script>
+
+<style lang="less" scoped>
+.project-index {
+  height: 100px;
+  margin: 0 auto;
+}
+</style>
