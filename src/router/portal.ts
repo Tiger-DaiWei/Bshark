@@ -1,7 +1,7 @@
 import { RouteConfig } from 'vue-router';
-import Index from '../views/index.vue';
+import Index from '@/views/Portal/index.vue';
 // 无需权限路由
-export const commonRoutes: RouteConfig[] = [
+export const portalRoutes: RouteConfig[] = [
   {
     path: '/',
     name: 'index',
