@@ -14,6 +14,8 @@ import './plugins/lodash';
 import './plugins/moment';
 // filter
 import './filters/index';
+// utils
+import './utils/index';
 
 import router from './router';
 import store from './store';

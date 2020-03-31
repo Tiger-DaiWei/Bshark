@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 // @ is an alias to /src
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
@@ -13,7 +13,9 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
   },
 })
 export default class Portal extends Vue {
-
+  public mounted() {
+    this.$utils.capitalize('ww');
+  }
 }
 </script>
 
