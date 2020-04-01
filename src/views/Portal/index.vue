@@ -14,7 +14,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 })
 export default class Portal extends Vue {
   public mounted() {
-    this.$utils.capitalize('ww');
+    console.log(this.$utils.capitalize('ww'));
   }
 }
 </script>
