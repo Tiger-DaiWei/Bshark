@@ -20,9 +20,12 @@ export default class Portal extends Vue {
   }
 
   public mounted() {
-    console.log(this.$utils.capitalize('ww'));
+    //
   }
 
+  public isIndexOf(item: any, arr: any[]) {
+    //
+  }
 }
 </script>
 
