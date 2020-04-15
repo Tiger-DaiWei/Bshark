@@ -1,5 +1,34 @@
 <template>
   <div class="portal-index">
+    <ul
+      class="content-detail"
+      v-show="changeShow">
+      <li
+        v-for="(item, index) in descriptList"
+        :key="index">
+        <dl>
+          <dt>
+            {{ item.dt }}
+          </dt>
+          <dd>
+            <p
+              v-for="(item1, index) in item.dds"
+              :key="index">
+              {{ item.dds.length > 1 ? index + 1 + '.' : '' }}{{ item1 }}
+            </p>
+          </dd>
+        </dl>
+      </li>
+    </ul>
+    <div
+      class="changeShow"
+      @click="changeShow = !changeShow">
+      <i :class="changeShow ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"></i>
+    </div>
+    <div class="content-suggest">
+      <h4>策略建议:</h4>
+      <p>重点关注家用新车工作日平台异常</p>
+    </div>
     <div class="content">
       <div
         class="image-position"
@@ -23,6 +52,7 @@ export default class Portal extends Vue {
   public someData!: any[];
   public showObj!: any[];
   public numberTotal!: number;
+  public descriptList!: any[];
   public data(): any {
     return {
       someData: [1, [2, 3], [4, [5, 6], 7], 8],
@@ -81,6 +111,20 @@ export default class Portal extends Vue {
                     list: ['增速：10.2%', '较市场：-0.8pt'],
                     styleList: 'color2',
                     children: [
+                  {
+                    title: '家用新4s费用环比家用续',
+                    list: ['增速：10.2%', '较市场：-0.8pt'],
+                    styleList: 'color2',
+                    children: [
+                    ],
+                  },
+                  {
+                    title: '家用新4s费用环比家用续',
+                    list: ['增速：10.2%', '较市场：-0.8pt'],
+                    styleList: 'color2',
+                    children: [
+                    ],
+                  },
                     ],
                   },
                 ],
@@ -129,6 +173,55 @@ export default class Portal extends Vue {
         ],
       }],
       numberTotal: 0,
+      descriptList: [
+        {
+          dt: '问题',
+          dds: [
+            '预估全月落后市场',
+          ],
+        },
+        {
+          dt: '原因',
+          dds: [
+            '预估全月落后市场',
+            '预估全月落后市场',
+            '预估全月落后市场',
+          ],
+        },
+        {
+          dt: '举措',
+          dds: [
+            '预估全月落后市场',
+            '预估全月落后市场',
+            '预估全月落后市场',
+          ],
+        },
+        {
+          dt: '目标',
+          dds: [
+            '预估全月落后市场',
+            '预估全月落后市场',
+            '预估全月落后市场',
+          ],
+        },
+        {
+          dt: '责任人',
+          dds: [
+            '预估全月落后市场',
+            '预估全月落后市场',
+            '预估全月落后市场',
+          ],
+        },
+        {
+          dt: '时间',
+          dds: [
+            '预估全月落后市场',
+            '预估全月落后市场',
+            '预估全月落预估预估全月落后市场预估全月落后市场全月落后市场后市场',
+          ],
+        },
+      ],
+      changeShow: true,
     };
   }
 
@@ -204,7 +297,87 @@ export default class Portal extends Vue {
 
 <style lang="less" scoped>
 .portal-index {
-  margin-top: 50px;
+  padding: 50px;
+  // 列表描述问题
+  .content-detail {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 4px;
+    border: 1px solid #e8e8e8;
+    li {
+      flex: 1;
+      border-left: 1px solid #e8e8e8;
+      margin-left: -1px;
+      color: #333;
+      dl {
+        height: 100%;
+        dt {
+          background: #F6F6F6;
+          line-height: 24px;
+          padding: 8px 20px;
+          font-size: 16px;
+          font-weight: 700;
+        }
+        dd {
+          padding: 20px;
+          height: calc(~'100% - 80px');
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          p {
+            line-height: 24px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+  // 展开收起
+  .changeShow {
+    color: #4D7AFF;
+    width: 14px;
+    height: 12px;
+    margin: 0 auto;
+    padding: 10px;
+    cursor: pointer;
+    i {
+      width: 14px;
+      font-weight: 700;
+    }
+  }
+  // 策略建议
+  .content-suggest {
+    border-radius: 4px;
+    border: 1px solid #e8e8e8;
+    height: 52px;
+    color: #333;
+    padding: 13px 30px;
+    box-sizing: border-box;
+    h4, p {
+      line-height: 24px;
+      height: 24px;
+      display: inline-block;
+    }
+    h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-right: 8px;
+      position: relative;
+      &:after {
+        display: block;
+        content: '';
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: #999;
+        position: absolute;
+        left: -11px;
+        top: 10px;
+      }
+    }
+  }
+  // 图谱样式
   .content {
     width: 1100px;
     margin: 0 auto;
