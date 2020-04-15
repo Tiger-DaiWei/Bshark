@@ -151,8 +151,8 @@ export default class Portal extends Vue {
   }
 
   public mounted() {
-    this.numberTotal = this.getTotal(this.showObj);
-    console.log('mounted');
+    this.numberTotal = this.$utils.getTotal(this.showObj);
+    console.log(this.numberTotal);
     console.log(this.$el);
     console.log(this.$data);
   }
@@ -198,19 +198,6 @@ export default class Portal extends Vue {
       }
     });
     return newArray;
-  }
-
-  // 递归求子元素个数
-  public getTotal(dataArray: any[]) {
-    let isNumber: number = 0;
-    if (dataArray.length) {
-      dataArray.forEach((el) => {
-        if (el.children.length) isNumber = isNumber + this.getTotal(el.children);
-        else isNumber = isNumber + 1;
-      });
-      return isNumber;
-    }
-    return 1;
   }
 }
 </script>
