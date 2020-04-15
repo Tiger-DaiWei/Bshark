@@ -1,7 +1,9 @@
 <template>
   <div class="portal-index">
     <div class="content">
-      <ImageMap :showObj="showObj"/>
+      <div class="image-position">
+        <ImageMap :showObj="showObj"/>
+      </div>
     </div>
   </div>
 </template>
@@ -22,7 +24,7 @@ export default class Portal extends Vue {
     return {
       someData: [1, [2, 3], [4, [5, 6], 7], 8],
       showObj: [{
-        title: '家用新车',
+        title: '新车较市场',
         list: ['增速：10.2%', '较市场：-0.8pt'],
         styleList: 'color1',
         children: [
@@ -71,12 +73,46 @@ export default class Portal extends Vue {
                     children: [
                     ],
                   },
+                  {
+                    title: '家用新4s费用环比家用续',
+                    list: ['增速：10.2%', '较市场：-0.8pt'],
+                    styleList: 'color2',
+                    children: [
+                    ],
+                  },
                 ],
               },
             ],
           },
           {
             title: '商用新车',
+            list: ['增速：10.2%', '较市场：-0.8pt'],
+            styleList: 'color2',
+            children: [
+              {
+                title: '商用新车',
+                list: ['增速：10.2%', '较市场：-0.8pt'],
+                styleList: 'color2',
+                children: [
+
+              {
+                title: '商用新车',
+                list: ['增速：10.2%', '较市场：-0.8pt'],
+                styleList: 'color2',
+                children: [],
+              },
+                ],
+              },
+              {
+                title: '商用新车',
+                list: ['增速：10.2%', '较市场：-0.8pt'],
+                styleList: 'color2',
+                children: [],
+              },
+            ],
+          },
+          {
+            title: '商用新车1',
             list: ['增速：10.2%', '较市场：-0.8pt'],
             styleList: 'color2',
             children: [],
@@ -161,15 +197,14 @@ export default class Portal extends Vue {
   margin-top: 50px;
   .content {
     width: 1100px;
-    height: 600px;
+    height: 800px;
     margin: 0 auto;
     border: 1px solid green;
-    position: relative;
-    .image-map {
-      position: absolute;
-      top: 50%;
-      left: 20px;
-      transform: translateY(-50%);
+    padding: 20px;
+    div.image-position {
+      height: 760px;
+      overflow: auto;
+      position: relative;
     }
   }
 }
