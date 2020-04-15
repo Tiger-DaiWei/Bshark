@@ -1,7 +1,9 @@
 <template>
   <div class="portal-index">
     <div class="content">
-      <div class="image-position">
+      <div
+        class="image-position"
+        :style="{height: `${numberTotal * 104}px`}">
         <ImageMap :showObj="showObj"/>
       </div>
     </div>
@@ -19,7 +21,8 @@ import ImageMap from '@/components/imageMap.vue';
 })
 export default class Portal extends Vue {
   public someData!: any[];
-  public showObj!: object;
+  public showObj!: any[];
+  public numberTotal!: number;
   public data(): any {
     return {
       someData: [1, [2, 3], [4, [5, 6], 7], 8],
@@ -117,8 +120,15 @@ export default class Portal extends Vue {
             styleList: 'color2',
             children: [],
           },
+          {
+            title: '商用新车2',
+            list: ['增速：10.2%', '较市场：-0.8pt'],
+            styleList: 'color2',
+            children: [],
+          },
         ],
       }],
+      numberTotal: 0,
     };
   }
 
@@ -141,6 +151,7 @@ export default class Portal extends Vue {
   }
 
   public mounted() {
+    this.numberTotal = this.getTotal(this.showObj);
     console.log('mounted');
     console.log(this.$el);
     console.log(this.$data);
@@ -189,6 +200,18 @@ export default class Portal extends Vue {
     return newArray;
   }
 
+  // 递归求子元素个数
+  public getTotal(dataArray: any[]) {
+    let isNumber: number = 0;
+    if (dataArray.length) {
+      dataArray.forEach((el) => {
+        if (el.children.length) isNumber = isNumber + this.getTotal(el.children);
+        else isNumber = isNumber + 1;
+      });
+      return isNumber;
+    }
+    return 1;
+  }
 }
 </script>
 
@@ -197,12 +220,10 @@ export default class Portal extends Vue {
   margin-top: 50px;
   .content {
     width: 1100px;
-    height: 800px;
     margin: 0 auto;
     border: 1px solid green;
     padding: 20px;
     div.image-position {
-      height: 760px;
       overflow: auto;
       position: relative;
     }
