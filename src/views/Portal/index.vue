@@ -29,11 +29,37 @@
       <h4>策略建议:</h4>
       <p>重点关注家用新车工作日平台异常</p>
     </div>
-    <div class="content">
-      <div
-        class="image-position"
-        :style="{height: `${numberTotal * 104}px`}">
-        <ImageMap :showObj="showObj"/>
+    <!-- 分板块 -->
+    <div class="platform-fluctuation">
+      <h4>1、分板块新车日平台波动情况</h4>
+      <div class="detail">
+        <dl>
+          <dt>前一工作日家用新车平台<span>126.2万</span></dt>
+          <dd>
+            <p>1、前一工作日家用新车平台<span>126.2万</span></p>
+            <p>2、前一工作日家用新车平台<span>126.2万</span></p>
+          </dd>
+        </dl>
+        <div
+          class="image-position"
+          :style="{height: `${numberTotal * 104}px`}">
+          <ImageMap :showObj="showObj"/>
+        </div>
+      </div>
+    </div>
+    <!-- 近期 -->
+    <div class="platform-fluctuation">
+      <h4>2、分板块新车日平台波动情况</h4>
+      <div class="detail">
+        <dl>
+          <dt>前一工作日家用新车平台<span>126.2万</span></dt>
+          <dd>
+            <p>1、前一工作日家用新车平台<span>126.2万</span></p>
+            <p>2、前一工作日家用新车平台<span>126.2万</span></p>
+          </dd>
+        </dl>
+        <div class="image-position">
+        </div>
       </div>
     </div>
   </div>
@@ -354,6 +380,7 @@ export default class Portal extends Vue {
     color: #333;
     padding: 13px 30px;
     box-sizing: border-box;
+    margin-bottom: 20px;
     h4, p {
       line-height: 24px;
       height: 24px;
@@ -377,15 +404,59 @@ export default class Portal extends Vue {
       }
     }
   }
-  // 图谱样式
-  .content {
-    width: 1100px;
-    margin: 0 auto;
-    border: 1px solid green;
-    padding: 20px;
-    div.image-position {
-      overflow: auto;
-      position: relative;
+  // 平台波动
+  .platform-fluctuation {
+    border: 1px solid #DEE6FF;
+    background-color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    h4 {
+      background: rgba(237,241,255,0.22);
+      border-bottom: 1px solid #DEE6FF;
+      line-height: 24px;
+      padding: 8px 20px;
+      color: #333;
+    }
+    .detail {
+      display: flex;
+      flex-direction: row;
+      dl {
+        width: 550px;
+        padding: 36px 20px;
+        box-sizing: border-box;
+        dt {
+          line-height: 24px;
+          padding-left: 10px;
+          position: relative;
+          &:before {
+            display: block;
+            content: '';
+            width: 3px;
+            height: 10px;
+            background: #4D7AFF;
+            position: absolute;
+            top: 7px;
+            left: 0px;
+          }
+          span {
+            color: #4D7AFF;
+          }
+        }
+        dd {
+          margin-top: 18px;
+          p {
+            line-height: 30px;
+          }
+        }
+      }
+      // 图谱样式
+      div.image-position {
+        flex: 1;
+        overflow: auto;
+        position: relative;
+        border-left: 1px dashed #ccc;
+      }
     }
   }
 }
