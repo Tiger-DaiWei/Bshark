@@ -1,50 +1,37 @@
 <template>
   <div class="portal-index">
-  <el-table
-    :data="tableData"
-    height="360"
-    style="width: 100%">
-    <el-table-column
-      prop="data1"
-      label="预警纬度"
-      width="100">
-    </el-table-column>
-    <el-table-column
-      prop="data2"
-      label="规则集"
-      width="100">
-      <template slot-scope="scope">
-        <el-checkbox>{{ scope.row.data2 }}</el-checkbox>
-      </template>
-    </el-table-column>
-    <el-table-column
-      prop="data3"
-      label="问题描述">
-      <template slot-scope="scope">
-        <el-input v-model="scope.row.data3" placeholder="请输入内容"></el-input>
-      </template>
-    </el-table-column>
-    <el-table-column
-      prop="data4"
-      label="预警时间">
-      <template slot-scope="scope">
-        <el-select v-model="scope.row.data4" placeholder="请选择">
-          <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-        </el-select>
-        <i
-          class="el-icon-circle-plus-outline btn-class"
-          @click="add(scope.row)"></i>
-        <i
-          class="el-icon-circle-close btn-class"
-          @click="del(scope.$index, tableData)"></i>
-      </template>
-    </el-table-column>
-  </el-table>
+    <ol>
+      <li>预警纬度</li>
+      <li>规则集</li>
+      <li>问题描述</li>
+      <li>指标</li>
+    </ol>
+    <ul>
+      <li
+        v-for="(item, index) in tableData"
+        :key="index">
+        <!-- 第一分层 -->
+        <div class="first">{{ item.plate }}</div>
+        <div class="second">
+          <!-- 第二分层 -->
+          <div
+            v-for="(item1, index) in item.children"
+            :key="index"
+            class="second-1">
+            <div>{{ item1.rule }}</div>
+            <div>{{ item1.des }}</div>
+            <!-- 第三层 -->
+            <div class="third">
+              <div
+                v-for="(item2, index) in item1.children"
+                :key="index">
+                {{ item2.name }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -64,12 +51,98 @@ export default class Portal extends Vue {
   public options!: any[];
   public data(): any {
     return {
-      tableData: [{
-        data1: '整体',
-        data2: '规则',
-        data3: '当月企划',
-        data4: '全月',
-      }],
+      tableData: [
+        {
+          plate: '整体',
+          length: 6,
+          children: [
+            {
+              rule: '1',
+              des: '描述1',
+              length: 2,
+              children: [
+                {
+                  name: '指标1',
+                },
+                {
+                  name: '指标2',
+                },
+              ],
+            },
+            {
+              rule: '2',
+              des: '描述2',
+              length: 2,
+              children: [
+                {
+                  name: '指标1',
+                },
+                {
+                  name: '指标2',
+                },
+              ],
+            },
+            {
+              rule: '3',
+              des: '描述3',
+              length: 2,
+              children: [
+                {
+                  name: '指标31',
+                },
+                {
+                  name: '指标32',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          plate: '续保',
+          length: 6,
+          children: [
+            {
+              rule: '1',
+              des: '描述1',
+              length: 2,
+              children: [
+                {
+                  name: '指标1',
+                },
+                {
+                  name: '指标2',
+                },
+              ],
+            },
+            {
+              rule: '2',
+              des: '描述2',
+              length: 2,
+              children: [
+                {
+                  name: '指标1',
+                },
+                {
+                  name: '指标2',
+                },
+              ],
+            },
+            {
+              rule: '3',
+              des: '描述3',
+              length: 2,
+              children: [
+                {
+                  name: '指标31',
+                },
+                {
+                  name: '指标32',
+                },
+              ],
+            },
+          ],
+        },
+      ],
       options: [
         {
           value: 'A01',
@@ -163,8 +236,61 @@ export default class Portal extends Vue {
 
 <style lang="less" scoped>
 .portal-index {
-  i.btn-class {
-    font-size: 20px;
+  ol {
+    width: 400px;
+    border: 1px solid #ccc;
+    li {
+      width: 100px;
+      display: inline-block;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+    }
+  }
+  ul {
+    li {
+      width: 400px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #ccc;
+      margin-top: -1px;
+      div.first {
+        flex: 1;
+      }
+      div.second {
+        flex: 3;
+        border-left: 1px solid #ccc;
+        .second-1 {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          > div {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+          }
+          .third {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-left: 1px solid #ccc;
+            > div {
+              height: 50px;
+              line-height: 50px;
+            }
+          }
+        }
+      }
+      div {
+        text-align: center;
+      }
+    }
   }
 }
 </style>
