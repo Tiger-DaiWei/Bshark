@@ -236,9 +236,11 @@ export default class Portal extends Vue {
 
 <style lang="less" scoped>
 .portal-index {
+  margin: 50px;
   ol {
     width: 400px;
-    border: 1px solid #ccc;
+    background: #F6F6F6;
+    border: 1px solid #e8e8e8;
     li {
       width: 100px;
       display: inline-block;
@@ -254,19 +256,20 @@ export default class Portal extends Vue {
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      border: 1px solid #ccc;
+      border: 1px solid #e8e8e8;
       margin-top: -1px;
       div.first {
         flex: 1;
       }
       div.second {
         flex: 3;
-        border-left: 1px solid #ccc;
+        border-left: 1px solid #e8e8e8;
         .second-1 {
           display: flex;
           flex-direction: row;
           justify-content: center;
           align-items: center;
+          border-bottom: 1px dashed #e8e8e8;
           > div {
             flex: 1;
             display: flex;
@@ -279,7 +282,7 @@ export default class Portal extends Vue {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border-left: 1px solid #ccc;
+            border-left: 1px solid #e8e8e8;
             > div {
               height: 50px;
               line-height: 50px;
