@@ -47,7 +47,7 @@
                 <div>
                   <i
                     class="el-icon-circle-plus-outline"
-                    @click="addIndicators(index1, index2)"></i>
+                    @click="addIndicators(index, index1)"></i>
                   <i
                     class="el-icon-circle-close"
                     @click="delIndicators(index, index1, index2)"></i>
@@ -662,6 +662,7 @@ export default class Portal extends Vue {
   }
 
   public addIndicators(num: number, num1: number) {
+    console.log(num, num1);
     this.tableData[num].children[num1].children.push(
       {
         title: '预警指标',
@@ -675,9 +676,11 @@ export default class Portal extends Vue {
   public delIndicators(num: number, num1: number, num2: number) {
     if (this.tableData[num].children[num1].children.length > 1) {
       this.tableData[num].children[num1].children.splice(num2, 1);
+    } else if (this.tableData[num].children.length > 1) {
+      this.tableData[num].children.splice(num1, 1);
     } else {
       this.$message({
-        message: '一个板块最少保留一个预警指标',
+        message: '一个板块最少保留一条数据',
         type: 'warning',
       });
     }
@@ -746,6 +749,9 @@ export default class Portal extends Vue {
               }
             }
           }
+        }
+        .second-1:last-child {
+          border: none;
         }
       }
       div {
