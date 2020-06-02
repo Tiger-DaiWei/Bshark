@@ -4,7 +4,12 @@
       <li>预警纬度</li>
       <li>规则集</li>
       <li>问题描述</li>
-      <li>指标</li>
+      <li>预警时间</li>
+      <li>预警指标</li>
+      <li>指标代号</li>
+      <li>符号选择</li>
+      <li>数值设置</li>
+      <li>操作</li>
     </ol>
     <ul>
       <li
@@ -15,17 +20,38 @@
         <div class="second">
           <!-- 第二分层 -->
           <div
-            v-for="(item1, index) in item.children"
-            :key="index"
+            v-for="(item1, index1) in item.children"
+            :key="index1"
             class="second-1">
             <div>{{ item1.rule }}</div>
             <div>{{ item1.des }}</div>
+            <div>
+              {{ item1.time }}
+              <i
+                class="el-icon-circle-plus-outline"
+                @click="addRule(index)"></i>
+              <i
+                class="el-icon-circle-close"
+                @click="removeRule(index, index1)"></i>
+            </div>
             <!-- 第三层 -->
             <div class="third">
               <div
-                v-for="(item2, index) in item1.children"
-                :key="index">
-                {{ item2.name }}
+                v-for="(item2, index2) in item1.children"
+                :key="index2"
+                class="third-1">
+                <div>{{ item2.title }}</div>
+                <div>{{ item2.number }}</div>
+                <div>{{ item2.select }}</div>
+                <div>{{ item2.set }}</div>
+                <div>
+                  <i
+                    class="el-icon-circle-plus-outline"
+                    @click="addIndicators(index1, index2)"></i>
+                  <i
+                    class="el-icon-circle-close"
+                    @click="delIndicators(index, index1, index2)"></i>
+                </div>
               </div>
             </div>
           </div>
@@ -60,12 +86,21 @@ export default class Portal extends Vue {
               rule: '1',
               des: '描述1',
               length: 2,
+              time: '时间',
               children: [
                 {
-                  name: '指标1',
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
                 },
                 {
-                  name: '指标2',
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
                 },
               ],
             },
@@ -73,12 +108,21 @@ export default class Portal extends Vue {
               rule: '2',
               des: '描述2',
               length: 2,
+              time: '时间',
               children: [
                 {
-                  name: '指标1',
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
                 },
                 {
-                  name: '指标2',
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
                 },
               ],
             },
@@ -86,12 +130,21 @@ export default class Portal extends Vue {
               rule: '3',
               des: '描述3',
               length: 2,
+              time: '时间',
               children: [
                 {
-                  name: '指标31',
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
                 },
                 {
-                  name: '指标32',
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
                 },
               ],
             },
@@ -105,38 +158,393 @@ export default class Portal extends Vue {
               rule: '1',
               des: '描述1',
               length: 2,
+              time: '时间',
               children: [
                 {
-                  name: '指标1',
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
                 },
                 {
-                  name: '指标2',
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
                 },
               ],
             },
             {
               rule: '2',
               des: '描述2',
+              time: '时间',
               length: 2,
               children: [
                 {
-                  name: '指标1',
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
                 },
                 {
-                  name: '指标2',
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
                 },
               ],
             },
             {
               rule: '3',
               des: '描述3',
+              time: '时间',
               length: 2,
               children: [
                 {
-                  name: '指标31',
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
                 },
                 {
-                  name: '指标32',
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          plate: '新车',
+          length: 6,
+          children: [
+            {
+              rule: '1',
+              des: '描述1',
+              length: 2,
+              time: '时间',
+              children: [
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+              ],
+            },
+            {
+              rule: '2',
+              des: '描述2',
+              time: '时间',
+              length: 2,
+              children: [
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+              ],
+            },
+            {
+              rule: '3',
+              des: '描述3',
+              time: '时间',
+              length: 2,
+              children: [
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          plate: '费用',
+          length: 6,
+          children: [
+            {
+              rule: '1',
+              des: '描述1',
+              length: 2,
+              time: '时间',
+              children: [
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+              ],
+            },
+            {
+              rule: '2',
+              des: '描述2',
+              time: '时间',
+              length: 2,
+              children: [
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+              ],
+            },
+            {
+              rule: '3',
+              des: '描述3',
+              time: '时间',
+              length: 2,
+              children: [
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          plate: '转保',
+          length: 6,
+          children: [
+            {
+              rule: '1',
+              des: '描述1',
+              length: 2,
+              time: '时间',
+              children: [
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+              ],
+            },
+            {
+              rule: '2',
+              des: '描述2',
+              time: '时间',
+              length: 2,
+              children: [
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+              ],
+            },
+            {
+              rule: '3',
+              des: '描述3',
+              time: '时间',
+              length: 2,
+              children: [
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
+                },
+                {
+                  title: '预警指标',
+                  number: '预警代号',
+                  select: '符号选择',
+                  set: '数值设置',
+                  operate: '操作',
                 },
               ],
             },
@@ -223,14 +631,57 @@ export default class Portal extends Vue {
     return newArray;
   }
 
-  public add(obj: object) {
-    this.tableData.push(obj);
+  public addRule(number1: number) {
+    this.tableData[number1].children.push(
+      {
+        rule: '1',
+        des: '描述1',
+        length: 2,
+        time: '时间',
+        children: [
+          {
+            title: '预警指标',
+            number: '预警代号',
+            select: '符号选择',
+            set: '数值设置',
+            operate: '操作',
+          },
+        ],
+      });
   }
 
-  public del(num: number, arrs: any[]) {
-    arrs.splice(num, 1);
+  public removeRule(num: number, num1: number) {
+    if (this.tableData[num].children.length > 1) {
+      this.tableData[num].children.splice(num1, 1);
+    } else {
+      this.$message({
+        message: '一个板块最少保留一条数据',
+        type: 'warning',
+      });
+    }
   }
 
+  public addIndicators(num: number, num1: number) {
+    this.tableData[num].children[num1].children.push(
+      {
+        title: '预警指标',
+        number: '预警代号',
+        select: '符号选择',
+        set: '数值设置',
+        operate: '操作',
+      });
+  }
+
+  public delIndicators(num: number, num1: number, num2: number) {
+    if (this.tableData[num].children[num1].children.length > 1) {
+      this.tableData[num].children[num1].children.splice(num2, 1);
+    } else {
+      this.$message({
+        message: '一个板块最少保留一个预警指标',
+        type: 'warning',
+      });
+    }
+  }
 }
 </script>
 
@@ -238,7 +689,7 @@ export default class Portal extends Vue {
 .portal-index {
   margin: 50px;
   ol {
-    width: 400px;
+    width: 900px;
     background: #F6F6F6;
     border: 1px solid #e8e8e8;
     li {
@@ -251,7 +702,7 @@ export default class Portal extends Vue {
   }
   ul {
     li {
-      width: 400px;
+      width: 900px;
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -262,7 +713,7 @@ export default class Portal extends Vue {
         flex: 1;
       }
       div.second {
-        flex: 3;
+        flex: 8;
         border-left: 1px solid #e8e8e8;
         .second-1 {
           display: flex;
@@ -278,20 +729,31 @@ export default class Portal extends Vue {
             align-items: center;
           }
           .third {
+            flex: 5;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
             border-left: 1px solid #e8e8e8;
-            > div {
-              height: 50px;
-              line-height: 50px;
+            .third-1 {
+              width: 100%;
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              div {
+                flex: 1;
+                height: 50px;
+                line-height: 50px;
+              }
             }
           }
         }
       }
       div {
         text-align: center;
+        i {
+          padding: 0 6px;
+          cursor: pointer;
+        }
       }
     }
   }
