@@ -68,7 +68,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
   components: {
   },
 })
-export default class table extends Vue {
+export default class Table extends Vue {
   public someData!: any[];
   public showObj!: any[];
   public numberTotal!: number;

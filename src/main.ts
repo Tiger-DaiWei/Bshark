@@ -3,6 +3,8 @@ import App from './App.vue';
 
 // element-ui
 import ElementUI from 'element-ui';
+// echart
+import Echart from 'echarts';
 
 // 默认样式
 import './styles/base.css';
@@ -23,6 +25,7 @@ import store from './store';
 Vue.config.productionTip = false;
 
 Vue.use(ElementUI);
+Vue.prototype.$echarts = Echart;
 
 new Vue({
   router,
