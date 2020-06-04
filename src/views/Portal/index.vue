@@ -75,7 +75,5 @@ export default class Portal extends Vue {
 </script>
 
 <style lang="less" scoped>
-.portal-index {
-  border: 1px solid red;
-}
+.portal-index {}
 </style>
