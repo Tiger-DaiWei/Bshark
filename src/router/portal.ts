@@ -4,7 +4,7 @@ import Index from '@/views/Portal/index.vue';
 export const portalRoutes: RouteConfig[] = [
   {
     path: '/portal',
-    name: 'index',
+    name: 'Index',
     component: Index,
   },
 ];

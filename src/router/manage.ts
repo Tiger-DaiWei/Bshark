@@ -4,7 +4,7 @@ import Index from '@/views/Manage/index.vue';
 export const manageRoutes: RouteConfig[] = [
   {
     path: '/manage',
-    name: 'index',
+    name: 'Index',
     component: Index,
   },
 ];

@@ -4,7 +4,7 @@ import Index from '@/views/Mall/index.vue';
 export const mallRoutes: RouteConfig[] = [
   {
     path: '/mall',
-    name: 'index',
+    name: 'Index',
     component: Index,
   },
 ];
