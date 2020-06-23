@@ -1,9 +1,17 @@
 <template>
   <div class="project-index">
+    <div class="showitemRouter">
+      <router-link
+        v-for='item in routerName'
+        :key='item.key'
+        :to="item.key">
+        {{ item.name }}
+        </router-link>
+    </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 // @ is an alias to /src
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
@@ -12,7 +20,17 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
   },
 })
 export default class Home extends Vue {
+  public routerName!: any[];
 
+  public data() {
+    return {
+      routerName: [
+        { name: '官网', key: 'portal'},
+        { name: '商场', key: 'mall'},
+        { name: '后台管理系统', key: 'manage'},
+      ],
+    };
+  }
 }
 </script>
 

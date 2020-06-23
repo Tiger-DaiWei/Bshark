@@ -1,6 +1,7 @@
 <template>
   <div class="manage-index">
     这是管理后台
+    <vddl/>
   </div>
 </template>
 
