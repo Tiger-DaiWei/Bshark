@@ -565,57 +565,30 @@ export default class Table extends Vue {
   }
 
   public beforeCreate() {
-    // console.log('beforeCreate');
-    // console.log(this.$el);
-    // console.log(this.$data);
   }
 
   public created() {
-    // console.log('created');
-    // console.log(this.$el);
-    // console.log(this.$data);
   }
 
   public beforeMount() {
-    // console.log('beforeMount');
-    // console.log(this.$el);
-    // console.log(this.$data);
   }
 
   public mounted() {
-    // console.log(this.numberTotal);
-    // console.log(this.$el);
-    // console.log(this.$data);
   }
 
   public method() {
-    // console.log('mothod');
-    // console.log(this.$el);
-    // console.log(this.$data);
   }
 
   public beforeUpdate() {
-    // console.log('beforeUpdate');
-    // console.log(this.$el);
-    // console.log(this.$data);
   }
 
   public updated() {
-    // console.log('update');
-    // console.log(this.$el);
-    // console.log(this.$data);
   }
 
   public beforeDestroy() {
-    // console.log('beforeDestory');
-    // console.log(this.$el); // el元素的挂载节点
-    // console.log(this.$data); // data属性
   }
 
   public destroyed() {
-    // console.log('destroyed');
-    // console.log(this.$el);
-    // console.log(this.$data);
   }
 
   // 将多维数组转为一维数组
