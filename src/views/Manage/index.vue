@@ -1,16 +1,16 @@
 <template>
   <div class="manage-index">
-    这是管理后台
-    <vddl/>
+    <ColRowTable/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import { Component, Prop, Vue } from 'vue-property-decorator';
-
+import ColRowTable from '@/components/Table/ColRowTable';
 @Component({
   components: {
+    ColRowTable,
   },
 })
 export default class Manage extends Vue {

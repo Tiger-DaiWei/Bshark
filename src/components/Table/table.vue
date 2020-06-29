@@ -564,33 +564,6 @@ export default class Table extends Vue {
     };
   }
 
-  public beforeCreate() {
-  }
-
-  public created() {
-  }
-
-  public beforeMount() {
-  }
-
-  public mounted() {
-  }
-
-  public method() {
-  }
-
-  public beforeUpdate() {
-  }
-
-  public updated() {
-  }
-
-  public beforeDestroy() {
-  }
-
-  public destroyed() {
-  }
-
   // 将多维数组转为一维数组
   public isOneArray(arr: any[]) {
     let newArray: any[] = [];
