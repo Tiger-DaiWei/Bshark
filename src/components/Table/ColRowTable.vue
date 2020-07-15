@@ -1,6 +1,5 @@
 <template>
   <div class="the-configuration-form">
-    
   </div>
 </template>
 

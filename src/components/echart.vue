@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id='myEcharts' style='height:400px'></div>
+    <div id='myEcharts' style='height:400px;width: 100%;'></div>
   </div>
 </template>
 
@@ -25,4 +25,9 @@ export default class Echart extends Mixins(EchartMixins) {
 </script>
 
 <style lang='less'>
+#myEcharts {
+  canvas {
+    width: 100%;
+  }
+}
 </style>

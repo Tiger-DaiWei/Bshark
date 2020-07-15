@@ -18,6 +18,7 @@ class EchartMixins extends Vue {
         title: {
           show: true,
           text: '趋势图测试',
+          textAlign: 'center',
         },
         legend: {},
         xAxis: {
