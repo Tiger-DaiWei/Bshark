@@ -1,16 +1,18 @@
 <template>
   <div class="portal-index">
-    <echart/>
+    这是
   </div>
 </template>
 
 <script lang='ts'>
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import echart from '@/components/echart.vue';
+import imageMap from '@/components/imageMap.vue';
 
 @Component({
   components: {
     echart,
+    imageMap,
   },
 })
 export default class Portal extends Vue {
