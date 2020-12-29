@@ -14,6 +14,14 @@ import imageMap from '@/components/imageMap.vue';
     echart,
     imageMap,
   },
+  beforeRouteLeave(to: any, from: any, next: any) {
+    console.log('beforeRouteLeave');
+    next();
+  },
+  beforeRouteEnter(to: any, from: any, next: any) {
+    console.log('beforeRouteLeave');
+    next();
+  },
 })
 export default class Portal extends Vue {
   public data(): any {
